@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>States</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+
+<body>
+<div class="container">
+    <h1>Welcome to Consumer Court Analytics</h1>
+    <form action="{{url_for('states')}}" method="post">
+      <label style="color: black;">Choose State</label><br>
+      <select name="state" id="state" class="drop-down" required>
+        <option value="">--Choose state--</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Goa">Goa</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Orissa">Orissa</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="West Bengal">West Bengal</option>
+        </select>
+        <br>
+        <label style="color: black;">Choose Type of Analytics</label><br>
+        <select name="typestat" id="typestat" class="drop-down" required>
+          <option value="">--Choose type--</option>
+          <option value="Parties involved">Frequent Parties</option>
+          <option value="Advocates involved">Frequent Advocates</option>
+          <option value="Analytics of Frequent Complainants">Frequent Complainants</option>
+          <option value="Analytics of Frequent Respondents">Frequent Respondents</option>
+          <option value="Analytics of Complainant Advocates">Complainant Advocates</option>
+          <option value="Analytics of Respondent Advocates">Respondent Advocates</option>
+          <option value="Analytics of shortest running cases">Shortest Running Cases</option>
+          <option value="Analytics of longest running cases">Longest Running Cases</option>
+          </select>
+          <br>
+
+        <button type="submit" style="font-size:15pt;color:white;background-color:green;border:2px solid #336600;padding:3px; margin: 5px"> See Analytics </button>
+      </form>
+    
+    {% block content %}
+    {% if queryOutput|length !=0 and types== 1 :%}
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+      <tr>
+        <th>{{queryOutput[0][0]}}</th>
+        <th>{{queryOutput[0][1]}}</th>
+      </tr>
+      <tr>
+        <td>{{queryOutput[1][0]}}</td>
+        <td>{{queryOutput[1][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[2][0]}}</td>
+        <td>{{queryOutput[2][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[3][0]}}</td>
+        <td>{{queryOutput[3][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[4][0]}}</td>
+        <td>{{queryOutput[4][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[5][0]}}</td>
+        <td>{{queryOutput[5][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[6][0]}}</td>
+        <td>{{queryOutput[6][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[7][0]}}</td>
+        <td>{{queryOutput[7][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[8][0]}}</td>
+        <td>{{queryOutput[8][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[9][0]}}</td>
+        <td>{{queryOutput[9][1]}}</td>
+      </tr>
+      <tr>
+        <td>{{queryOutput[10][0]}}</td>
+        <td>{{queryOutput[10][1]}}</td>
+        </tr>
+
+    </table>
+    <img src="{{url_for('static',filename='output.png')}}"/>
+    <br>
+    <br>
+    <h2></h2>
+    <h3>The above analytics is for last 3 years(2019, 2020, 2021)</h3>
+    {% elif types== -2 :%}
+    <h2>No data found</h2>
+
+    {%else%}
+    <h1></h1>
+    {%endif%}
+    {% endblock %}
+    <br>
+    <a href="{{url_for('india')}}">Click here to see the analytics for all over India</a>
+    <br>
+    <br>
+    <h2></h2>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>
